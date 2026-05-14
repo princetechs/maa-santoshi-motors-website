@@ -5,14 +5,22 @@ filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
 
-    filterButtons.forEach((item) => item.classList.remove("active"));
+    filterButtons.forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-pressed", "false");
+    });
     button.classList.add("active");
+    button.setAttribute("aria-pressed", "true");
 
     bikeCards.forEach((card) => {
       const types = card.dataset.type.split(" ");
       card.classList.toggle("hidden", filter !== "all" && !types.includes(filter));
     });
   });
+});
+
+filterButtons.forEach((button) => {
+  button.setAttribute("aria-pressed", button.classList.contains("active") ? "true" : "false");
 });
 
 const enquiryForm = document.querySelector(".enquiry-form");

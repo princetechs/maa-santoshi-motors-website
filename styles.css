@@ -20,6 +20,12 @@ html {
   scroll-behavior: smooth;
 }
 
+#stock,
+#process,
+#contact {
+  scroll-margin-top: 96px;
+}
+
 body {
   margin: 0;
   color: var(--ink);
@@ -55,7 +61,10 @@ img {
 .quick-contact a,
 .site-footer,
 .contact-actions,
-.hero-actions {
+.hero-actions,
+.mobile-action-strip,
+.card-actions,
+.mobile-bottom-bar {
   display: flex;
   align-items: center;
 }
@@ -187,6 +196,10 @@ h3 {
   flex-wrap: wrap;
   gap: 12px;
   margin: 22px 0 24px;
+}
+
+.mobile-action-strip {
+  display: none;
 }
 
 .button {
@@ -339,6 +352,45 @@ h3 {
   padding: 0 clamp(18px, 5vw, 72px) 22px;
 }
 
+.buyer-check {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding: 0 clamp(18px, 5vw, 72px) 26px;
+}
+
+.buyer-check article {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  column-gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.buyer-check span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  grid-row: span 2;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--red);
+  font-weight: 800;
+}
+
+.buyer-check strong {
+  font-size: 17px;
+}
+
+.buyer-check p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .filter-button {
   min-width: 92px;
   min-height: 42px;
@@ -390,9 +442,30 @@ h3 {
 
 .bike-card a {
   display: inline-flex;
-  margin-top: 8px;
   color: var(--red);
   font-weight: 800;
+}
+
+.card-actions {
+  gap: 10px;
+  margin-top: 14px;
+  padding: 0;
+}
+
+.card-actions a {
+  justify-content: center;
+  min-height: 44px;
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--red);
+}
+
+.card-actions a:last-child {
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: #fff;
 }
 
 .process {
@@ -525,6 +598,10 @@ textarea {
   font-weight: 700;
 }
 
+.mobile-bottom-bar {
+  display: none;
+}
+
 @media (max-width: 980px) {
   .site-header {
     align-items: flex-start;
@@ -570,8 +647,13 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  body {
+    padding-bottom: 78px;
+  }
+
   .site-header {
     gap: 14px;
+    padding: 14px 20px 12px;
   }
 
   .brand {
@@ -580,16 +662,80 @@ textarea {
 
   .header-call {
     width: 100%;
+    min-height: 44px;
     justify-content: center;
   }
 
   nav {
+    position: sticky;
+    top: 0;
     gap: 12px;
+    padding-top: 2px;
     overflow-x: auto;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 39px;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+
+  .hero {
+    padding: 30px 20px 0;
+  }
+
+  .hero-text {
+    font-size: 17px;
+  }
+
+  .odia-hook {
+    margin-bottom: 14px;
+    font-size: 19px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 14px;
+  }
+
+  .button {
+    min-height: 50px;
+  }
+
+  .mobile-action-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 0 18px;
+  }
+
+  .mobile-action-strip a {
+    min-height: 66px;
+    padding: 10px 8px;
+    border: 1px solid rgba(20, 23, 31, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.82);
+    text-align: center;
+  }
+
+  .mobile-action-strip span,
+  .mobile-action-strip strong {
+    display: block;
+  }
+
+  .mobile-action-strip span {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .mobile-action-strip strong {
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 1.25;
   }
 
   .hero-stats,
@@ -613,16 +759,152 @@ textarea {
 
   .hero-main {
     min-height: 360px;
-    height: 440px;
+    height: 390px;
   }
 
-  .hero-strip img,
+  .hero-strip {
+    display: none;
+  }
+
+  .section-intro {
+    padding: 52px 20px 20px;
+  }
+
+  #stock,
+  #process,
+  #contact {
+    scroll-margin-top: 168px;
+  }
+
+  .section-intro p:not(.eyebrow) {
+    font-size: 17px;
+  }
+
+  .buyer-check {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 0 20px 20px;
+  }
+
+  .buyer-check article {
+    grid-template-columns: 38px minmax(0, 1fr);
+    padding: 14px;
+  }
+
+  .buyer-check span {
+    width: 38px;
+    height: 38px;
+  }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 20px 14px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: rgba(251, 250, 248, 0.94);
+    backdrop-filter: blur(12px);
+  }
+
+  .filter-button {
+    min-width: max-content;
+    padding: 0 18px;
+  }
+
+  .bike-grid {
+    gap: 14px;
+    padding: 0 20px 58px;
+  }
+
+  .bike-card {
+    box-shadow: 0 12px 28px rgba(20, 23, 31, 0.08);
+  }
+
   .bike-card img {
     height: 240px;
+  }
+
+  .bike-card div {
+    padding: 16px;
+  }
+
+  .bike-card .card-actions {
+    padding: 0;
+  }
+
+  .bike-card h3 {
+    font-size: 23px;
+  }
+
+  .bike-card p {
+    font-size: 16px;
+  }
+
+  .card-actions a {
+    min-height: 48px;
+  }
+
+  .process,
+  .location-contact {
+    padding: 56px 20px;
+  }
+
+  .process-grid article {
+    padding: 18px;
+  }
+
+  address {
+    font-size: 19px;
+  }
+
+  .contact-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .enquiry-form {
+    padding: 18px;
   }
 
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
+    padding-bottom: 36px;
+  }
+
+  .mobile-bottom-bar {
+    display: flex;
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    z-index: 30;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 8px;
+    background: rgba(16, 19, 26, 0.94);
+    box-shadow: 0 18px 44px rgba(20, 23, 31, 0.32);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobile-bottom-bar a {
+    display: inline-flex;
+    min-height: 48px;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #fff;
+    background: var(--red);
+    font-weight: 800;
+  }
+
+  .mobile-bottom-bar a:first-child {
+    background: var(--green);
   }
 }
